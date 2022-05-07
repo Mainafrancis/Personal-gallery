@@ -1,0 +1,65 @@
+{%extends 'all_images/base.html' %}
+
+{% block content %}
+{{block.super}}
+
+<body>
+
+  <div class="container">
+    <div class="row">
+
+      {% for img in image %}
+
+      <div class="col-md-4">
+      
+          <img style="margin-top:20px; margin-bottom:20px;" src="{{img.image.url}}" alt="Image" height="200"
+            width="300" data-toggle="modal" data-target="#lucy{{img.id}}"><br><br>
+        </a>
+      </div>
+       <!-- modal content -->
+      <div id="lucy{{img.id}}" class="modal fade" role="dialog"
+        style="background-color:rgb(47, 61, 61);font-family: monospace;">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <p style="color:rgb(168, 105, 105);">{{img.name}}</p>
+              <p class="modal-title"><strong>{{img.description}}</strong></p>
+            </div>
+            <div class="modal-body">
+              <img src="{{img.image.url}}" alt="Image" width='400' length='500'>
+              <p><strong>place: {{img.location}}</strong></p><br>
+              <p><strong>category:</strong>{{img.category}}</p>
+              <!-- The button used  -->
+              <button class="btn btn-success" onclick="imageurl('{{image.id}}-url')">Copy Image Url</button>
+              <input class="form-control input-lg" type="text" id="{{image.id}}-url">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal"
+                style="background-color:rgb(168, 105, 105);color:white;">Close</button>
+            </div>
+          </div>
+            <script>
+              //  <!-- script-->
+              function imageurl(element) {
+                var image = document.getElementById(element);
+                image.select();
+                document.execCommand('copy');
+                alert("Copied the link of image: " + image.value);
+              }
+            </script>
+           
+          
+
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+
+
+  </div>
+</body>
+
+</body>
+{% endblock %}

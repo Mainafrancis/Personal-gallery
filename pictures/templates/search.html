@@ -1,0 +1,26 @@
+{%extends 'all_images/base.html'%}
+{% block content %}
+<div class="container">
+
+    <div class="row">
+        {% if images%}
+        <h2>Found {{ images|length }} of searched term. {{message}}</h2>
+        {% else %}
+        <h2> Found 0 images for the search term. {{message}}</h2>
+        {% endif %}
+
+    </div>
+    {% if images%}
+
+    {% for img in images %}
+
+    <div class=" row">
+        <div class="col-md-6">
+            <p>{{img.category}} </p>
+            <img src="{{img.image.url}}" class="img-responsive" alt="Image" width='400' length='450'>
+        </div>
+        {%endfor%}
+        {%endif%}
+    </div>
+
+    {%endblock%}

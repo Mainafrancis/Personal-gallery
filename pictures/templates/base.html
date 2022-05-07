@@ -1,0 +1,36 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title class="text-centre"> Beautiful artwork</title>
+    {% endif %}
+
+    {% block styles %}
+    {% bootstrap_css %}
+    {% endblock %}
+</head>
+
+<body>
+    {% include 'all_images/navbar.html' %}
+    {% block content %}
+     
+    <div class="container">
+        <div class="jumbutron">
+            <h1 style="text-align: center; font-family: 'Great Vibes', cursive;font-size: 50px; color: black;"class='text-center'>Beauty is an Expression</h1>
+        </div>
+    </div>
+    
+    {%endblock%}
+    {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     {% bootstrap_javascript %}
+    {% endblock %}
+</body>
+
+</html>

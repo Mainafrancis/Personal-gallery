@@ -16,4 +16,14 @@ def search_results(request):
         return render(request, 'all_images/search.html',{"message":message,"images": searched_images})
 
     else:
-        message = "You haven't searched for any term"         
+        message = "You haven't searched for any term"
+        return render(request, 'all_images/search.html',{"message":message})
+
+def detail(request,image_id):
+    image = Image.objects.get(id = image_id)
+    return render(request,"all_images/details.html", {"image":image})
+def location(request,country):
+    locate= location.objects.get(location=country)
+    return render(request,"all_images/location.html",{"locate":locate})
+        
+

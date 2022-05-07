@@ -1,0 +1,51 @@
+{%extends 'all_images/base.html'%}
+
+{% block content %}
+{{block.super}}
+
+<body>
+
+  <div class="container">
+
+    {% for img in image %}
+    <div class="row">
+      <div class="col-md-4">
+        <a data-toggle="modal" data-target="#{{img.id}}">
+          <img style="margin-top:20px; margin-bottom:20px;" src="{{img.image.url}}" alt="Image" height="200" width="300" ><br><br>
+        </a>
+      </div>
+
+
+      <div id="{{img.id}}" class="modal fade" role="dialog"
+        style="background-color:rgb(47, 61, 61);font-family: monospace;">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <p style="color:rgb(168, 105, 105);">{{img.name}}</p>
+              <p class="modal-title"><strong>{{img.description}}</strong></p>
+            </div>
+            <div class="modal-body">
+              <img src="{{img.image.url}}" alt="Image" width='400' length='500'>
+              <p><strong>place: {{img.location}}</strong></p><br>
+              <p><strong>category:</strong>{{img.category}}</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal"
+                style="background-color:rgb(168, 105, 105);color:white;">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    
+  </div>
+</body>
+
+</body>
+{% endblock %}
